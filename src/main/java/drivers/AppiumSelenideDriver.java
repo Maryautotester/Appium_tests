@@ -43,18 +43,4 @@ public class AppiumSelenideDriver implements WebDriverProvider {
             throw new RuntimeException(e);
         }
     }
-
-    private File downloadApk() {
-        File apk = new File("build/ApiDemos-debug.apk");
-        if (!apk.exists()) {
-            String url = "https://github.com/appium/sample-code/blob/master/sample-code/apps/ApiDemos/bin/ApiDemos-debug.apk?raw=true";
-            try (InputStream in = new URL(url).openStream()) {
-                copyInputStreamToFile(in, apk);
-            }
-            catch (IOException e) {
-                throw new AssertionError("Failed to download apk", e);
-            }
-        }
-        return apk;
-    }
 }
